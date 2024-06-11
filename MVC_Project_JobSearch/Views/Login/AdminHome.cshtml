@@ -1,0 +1,16 @@
+﻿@model MVC_Project_JobSearch.Models.Login
+@{
+    ViewBag.Title = "AdminHome";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>AdminHome</h2>
+@using (Html.BeginForm("Login_Click", "Login", FormMethod.Post))
+{
+   <div>
+       @Html.ActionLink("POST JOB", "JobAdd_Click", "JobAdd")
+   </div>
+
+}
+
+

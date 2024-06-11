@@ -1,0 +1,33 @@
+﻿@model MVC_Project_JobSearch.Models.ApplyJob
+@{
+    ViewBag.Title = "ApplyJob_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ApplyJob</h2>
+
+<div>
+    @using (Html.BeginForm("ApplyJob_Click", "ApplyJob", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Date:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.applydate)
+        </div>
+        <div>
+            <label>Resume:</label>
+        </div>
+        <div>
+            @Html.TextBox("file", "", new { Type = "file" })
+        </div>
+        <div>
+            <input type="submit" value="Apply" />
+            @*@Html.DisplayFor(m => m.applymsg)*@
+        </div>
+    }
+    <div>
+        @Html.ActionLink("back to jobs", "Searchjob_Pageload", "Job_Search")
+    </div>
+</div>
+

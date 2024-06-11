@@ -1,0 +1,155 @@
+﻿
+@model MVC_Project_JobSearch.Models.UserInsertUser
+
+@{
+    ViewBag.Title = "User_load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Insert User Details_</h2>
+<div>
+    @using (Html.BeginForm("User_Click", "UserRegistration", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>
+            <label>Name:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.name)
+            @Html.ValidationMessageFor(m => m.name)
+        </div>
+
+        <div>
+            <label>Address:</label>
+        </div>
+        <div>
+            @Html.TextAreaFor(m => m.address)
+            @Html.ValidationMessageFor(m => m.address)
+        </div>
+
+        <div>
+            <label>Age:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.age)
+            @Html.ValidationMessageFor(m => m.age)
+        </div>
+
+        <div>
+            <label>Gender:</label>
+        </div>
+        <div>
+            Male
+            @Html.RadioButtonFor(model => model.gen, "Male")
+            Female
+            @Html.RadioButtonFor(model => model.gen, "Female")
+            Other
+            @Html.RadioButtonFor(model => model.gen, "Other")
+
+        </div>
+
+        <div>
+            <label>Phone:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Phone)
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+
+
+        <div>
+            <label>Email:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.email)
+            @Html.ValidationMessageFor(m => m.email)
+        </div>
+
+
+        <div>
+            <label>State:</label>
+        </div>
+        <div>
+            @Html.DropDownList("Selstates", (SelectList)ViewBag.Selstates, "--select--", new { @class = "form-control" })
+            @*@Html.TextBoxFor(m => m.state)*@
+        </div>
+
+        <div>
+            <label>District:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.district)
+            @Html.ValidationMessageFor(m => m.district)
+        </div>
+
+        <div>
+            <label>Pincode:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.pin)
+            @Html.ValidationMessageFor(m => m.pin)
+        </div>
+
+        <div>
+            <label>Qualification:</label>
+        </div>
+        <div>
+            @foreach (var item in Model.MyFavoriteQual)
+            {
+
+                <label>
+                    <input type="checkbox" value="@item.Value" checked="@item.IsChecked" name="selectedQual" id="@item.Value" />
+                    @Html.Raw(item.Text)
+                </label>
+
+            }
+            @*@Html.TextBoxFor(m => m.qual)*@
+        </div>
+
+        <div>
+            <label>CGPA:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.cgpa)
+            @Html.ValidationMessageFor(m => m.cgpa)
+        </div>
+
+        <div>
+            <label>Skills:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.skills)
+            @Html.ValidationMessageFor(m => m.skills)
+        </div>
+
+
+        <div>
+            <label>Username:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.uname)
+            @Html.ValidationMessageFor(m => m.uname)
+        </div>
+
+        <div>
+            <label>Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.pwd)
+        </div>
+
+        <div>
+            <label>Confirm Password:</label>
+        </div>
+        <div>
+            @Html.PasswordFor(m => m.cpwd)
+            @Html.ValidationMessageFor(m => m.cpwd)
+        </div>
+
+        <div>
+            <input type="submit" value="Insert" />
+            @Html.DisplayFor(m => m.usermsg)
+        </div>
+
+    }
+</div>
+

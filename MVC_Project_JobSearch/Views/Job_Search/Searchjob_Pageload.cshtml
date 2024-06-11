@@ -1,0 +1,110 @@
+﻿@model MVC_Project_JobSearch.Models.JobSearch
+@{
+    ViewBag.Title = "Searchjob_Pageload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search Job</h2>
+<div>
+    @using (Html.BeginForm("searchjob_click", "Job_Search", FormMethod.Post))
+    {
+        <table>
+            <tr>
+                <td><label>JobName:</label></td>
+                <td>@Html.TextBoxFor(m => m.insertse.jobname)</td>
+
+                <td><label>Skills:</label></td>
+                <td>@Html.TextBoxFor(m => m.insertse.reqskills)</td>
+
+                <td><label>Location:</label></td>
+                <td>@Html.TextBoxFor(m => m.insertse.location)</td>
+
+                <td><input type="submit" value="Search" /></td>
+            </tr>
+        </table>
+    }
+</div>
+<div>
+    @using (Html.BeginForm("Searchjob_Pageload", "Job_Search", FormMethod.Get))
+    {
+        if (Model != null)
+        {
+            if (Model.selectjob != null && Model.selectjob.Count != 0)
+            {
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.jobname)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.numofvacancy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.reqskills)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.qualification)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.salary)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.jobstatus)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.entrydate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.insertse.lastdate)
+                        </th>
+
+                    </tr>
+                    @foreach (var item in Model.selectjob)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.jobname)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.numofvacancy)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.reqskills)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelitem => item.qualification)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.salary)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.entrydate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.lastdate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelitem => item.jobstatus)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Apply now", "ApplyJob_Load", "ApplyJob", new { cid = item.company_id, jid = item.job_id }, null)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            else
+            {
+                <script>
+                            alert('no matching jobs found');
+
+                </script>
+            }
+        }
+    }
+    <div>
+        @Html.ActionLink("back to Home", "UserHome", "Login")
+    </div>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@model MVC_Project_JobSearch.Models.JobInsert
+@{
+    ViewBag.Title = "JobAdd_Load";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Job</h2>
+<div>
+    @using (Html.BeginForm("JobAdd_Click", "JobAdd", FormMethod.Post))
+    {
+        <div>
+            <label>Job Name:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Job)
+            @Html.ValidationMessageFor(m => m.Job)
+        </div>
+
+        <div>
+            <label>Number of Vacancy:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.vacancy)
+            @Html.ValidationMessageFor(m => m.vacancy)
+        </div>
+
+        <div>
+            <label>Skills Required:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.skill)
+            @Html.ValidationMessageFor(m => m.skill)
+        </div>
+
+        <div>
+            <label>Experience:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.experience)
+            @Html.ValidationMessageFor(m => m.experience)
+        </div>
+
+        <div>
+            <label>Qualification:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.qualification)
+            @Html.ValidationMessageFor(m => m.qualification)
+        </div>
+
+        <div>
+            <label>Salary:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Salary)
+            @Html.ValidationMessageFor(m => m.Salary)
+        </div>
+
+        <div>
+            <label>Location:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.Location)
+            @Html.ValidationMessageFor(m => m.Location)
+        </div>
+
+        <div>
+            <label>Start Date:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.startdate)
+            @Html.ValidationMessageFor(m => m.startdate)
+        </div>
+
+        <div>
+            <label>End  Date:</label>
+        </div>
+        <div>
+            @Html.TextBoxFor(m => m.enddate)
+            @Html.ValidationMessageFor(m => m.enddate)
+        </div>
+
+        <div>
+            <input type="submit" value="Post" />
+            @Html.DisplayFor(m => m.msg)
+        </div>
+    }
+</div>
+
